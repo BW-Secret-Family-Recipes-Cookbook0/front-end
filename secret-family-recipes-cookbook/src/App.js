@@ -1,7 +1,8 @@
 import './App.css';
 import {BrowserRouter as Router, Route, Link, Switch } from "react-router-dom" 
-import Login from './components/login'
-
+import Registration from './components/registrationForm'
+import login from './components/login'
+import React, {useState} from 'react'
 function App() {
 
   const logout = () => {
@@ -11,6 +12,7 @@ function App() {
   return (
   <Router>
     <div className="App">
+    <Registration/> /*I am not sure where to put the router, switch, route */
       <ul>
         <li>
           <Link to='/login'>Login</Link>
@@ -20,10 +22,11 @@ function App() {
         </li>
       </ul>
       <Switch>
-        <Route path="/login" component={Login} />
+        <Route path="/login" component={login} />
       </Switch>
     </div>
   </Router>
+    
   );
 }
 
