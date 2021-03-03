@@ -5,7 +5,7 @@ class Login extends React.Component {
   state = {
     credentials: {
       username: '',
-      password: ''
+      password: '',
     }
   };
 
