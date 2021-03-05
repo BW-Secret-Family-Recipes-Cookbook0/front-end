@@ -1,9 +1,61 @@
 body {
-  background: black;
   display: flex;
-  min-height: 100vh;
   justify-content: center;
   align-items: center;
+}
+Header {
+  width: 1500px;
+  height: 300px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background: black;
+  margin: 0 auto;
+}
+.navigation {
+  width: 1500px;
+  height: 300px;
+  display: flex;
+}
+.logo {
+  width: 700px;
+}
+img {
+  margin-top: 30px;
+  margin-left: 20px;
+}
+
+.nav {
+  width: 800px;
+}
+
+.navigation ul {
+  margin-top: 100px;
+  list-style: none;
+  text-decoration: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  margin-right: 1em;
+  margin-left: 0.5em;
+  padding: 2em 1em;
+}
+
+.navigation li {
+  display: flex;
+  align-items: flex-end;
+  font-family: 'Lato', sans-serif;
+  margin: 20px;
+  font-size: 30px;
+}
+Link p {
+  text-decoration: none;
+}
+
+.headerLink {
+  color: white;
+  text-decoration: none;
 }
 
 .form-container {
@@ -20,6 +72,12 @@ body {
   flex-direction: column;
   justify-content: space-evenly;
   padding: 20px;
+}
+
+.form p {
+  color: black;
+  font-weight: 500;
+  text-align: left;
 }
 
 /*.success-message {
@@ -50,7 +108,7 @@ button {
   color: black;
   cursor: pointer;
   padding: 10px;
-  margin-top: 15px;
+  margin-top: 20px;
   width: 100px;
   margin: auto;
 }

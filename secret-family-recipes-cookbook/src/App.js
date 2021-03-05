@@ -1,27 +1,23 @@
-import './App.css';
+
 import {BrowserRouter as Router, Route, Link, Switch } from "react-router-dom" 
 import Login from './components/login'
-import axios from 'axios'
+import RegistrationForm from './components/registrationForm'
+import RecipeList from './components/RecipeList'
+import Header from './components/Header'
 
 function App() {
 
-  const logout = () => {
-
-  }
+  
 
   return (
   <Router>
     <div className="App">
-      <ul>
-        <li>
-          <Link to='/login'>Login</Link>
-        </li>
-        <li>
-          <Link onClick={logout}>Logout</Link>
-        </li>
-      </ul>
+    <Header/>
+     
+      <RecipeList/>
       <Switch>
         <Route path="/login" component={Login} />
+        <Route path="/register" component={RegistrationForm} />
       </Switch>
     </div>
   </Router>
