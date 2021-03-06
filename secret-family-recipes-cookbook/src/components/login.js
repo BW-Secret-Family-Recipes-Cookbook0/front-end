@@ -29,6 +29,8 @@ class Login extends React.Component {
       console.log(err)
     })
   };
+  
+ 
 
   render() {
     return (
@@ -41,6 +43,7 @@ class Login extends React.Component {
             type="text"
             name="username"
             value={this.state.credentials.username}
+            className="input-field"
             onChange={this.handleChange}/>
           </label>
           <label>
@@ -49,11 +52,10 @@ class Login extends React.Component {
             type="password"
             name="password"
             value={this.state.credentials.password}
+            className="input-field"
             onChange={this.handleChange}/>
           </label>
-          
-          
-          <button>LOGIN</button>
+          <button onSubmit={this.login}>LOGIN</button>
         </form>
       </div>
     );

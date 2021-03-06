@@ -30,11 +30,10 @@ const header = () => {
                 </li>
                 </ul> 
             </div>
-            
-                
         </div>
+        <hr/>  
     </header>
-        
+     
     )
 }
 

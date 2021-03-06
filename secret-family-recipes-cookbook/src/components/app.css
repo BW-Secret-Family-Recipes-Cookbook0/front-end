@@ -59,12 +59,13 @@ Link p {
 }
 
 .form-container {
+  margin-top: 100px;
   border-radius: 10px;
   width: 360px;
   background-color: #e5e5e5;
   margin: auto;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
-  padding: 10px;
+  padding: 20px;
 }
 
 .registration-form {
@@ -120,4 +121,125 @@ h2 {
 p {
   font-weight: 500;
   text-align: left;
+}
+
+/*Recipe Cards*/
+
+.cards-container {
+  width: 1500px;
+  height: 800px;
+}
+
+h1 {
+  color: black;
+  text-align: center;
+}
+
+hr {
+  color: red;
+  width: 1500px;
+  height: 5px;
+}
+
+.search-form {
+  display: flex;
+  margin: auto;
+  width: 30rem;
+  height: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #e5e5e5;
+  border-radius: 10px;
+  margin-bottom: 5rem;
+}
+
+.buttonSearch {
+  border: solid 2px #f2a03d;
+  background-color: #e5e5e5;
+  border-radius: 5px;
+  color: black;
+  cursor: pointer;
+  padding: 10px;
+  margin-top: 20px;
+  width: 100px;
+}
+
+.inputSearch {
+  margin-left: 2em;
+  border: none;
+  font-size: 16px;
+  border: 0;
+  font-family: 'Roboto', sans-serif;
+  background-color: #f2f2f2;
+}
+
+.recipe {
+  width: 20rem;
+  margin: 3rem;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  background-color: #e5e5e5;
+  padding: 2rem;
+  justify-content: space-evenly;
+  border-radius: 0.5rem;
+  box-shadow: 2rem 3rem 5rem #aaa;
+}
+
+.recipe h2 {
+  background-color: rgba(161, 161, 161, 0.7);
+  border-radius: 0.5rem;
+  padding: 0.3rem 0.5rem;
+  top: 2.5rem;
+  left: 2.5rem;
+  right: 2.5rem;
+  font-size: 1.5rem;
+  font-weight: 400;
+  text-shadow: 0 0.5rem 0.5rem #555;
+  color: #fff;
+  margin: auto;
+}
+
+.recipe img {
+  border-radius: 0.5rem;
+  object-fit: cover;
+}
+
+.recipe a {
+  font-size: 1.2rem;
+  color: #262626;
+}
+
+.recipe button {
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  color: #fff;
+  background-color: #f2a03d;
+  border: none;
+  border-radius: 0.5rem;
+  height: 3rem;
+  width: 12rem;
+  margin-top: 1.2rem;
+}
+
+.ingredient-list {
+  margin-top: 1rem;
+  background-color: #f0f0f0;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+}
+
+.ingredient-list li {
+  margin: 0.5rem 0;
+}
+
+.ingredient-text {
+  font-size: 1.5rem;
+  color: #888;
+}
+
+.ingredient-weight {
+  color: #40b48e;
+  font-size: 1.3rem;
 }
