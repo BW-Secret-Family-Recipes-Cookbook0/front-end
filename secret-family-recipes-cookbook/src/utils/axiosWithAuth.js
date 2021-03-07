@@ -7,6 +7,10 @@ export const axiosWithAuth = () => {
   headers: {
    authorization: token 
   },
-  baseUrl: 'http://localhost:5000/api'
+  baseUrl: 'https://bw-secret-family-recipes0.herokuapp.com/api'
  })
 }
+
+
+export default axiosWithAuth;
+// https://ialkamal-be-amp.herokuapp.com/api

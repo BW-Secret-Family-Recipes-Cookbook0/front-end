@@ -2,7 +2,7 @@ import './App.css';
 import {BrowserRouter as Router, Route, Link, Switch, NavLink} from "react-router-dom" 
 import Login from './components/login'
 import axios from 'axios'
-import registrationForm from './components/registrationForm'
+import registrationForm from './components/RegistrationForm'
 import { axiosWithAuth } from './utils/axiosWithAuth'
 import PrivateRoute from './components/PrivateRoute'
 import React, { useState, useEffect } from "react";
@@ -11,6 +11,7 @@ import RecipeForm from './components/RecipeForm'
 import UpdateForm from './components/UpdateForm'
 import RecipeList from './components/RecipeList'
 import Home from './components/Home'
+import RegistrationForm from './components/RegistrationForm'
 
 function App() {
     const [items, setItems] = useState([]);
@@ -66,8 +67,8 @@ function App() {
           <Route component={Login} />
         </Switch>
       </div>
-
-      { <Route exact path="/" component={Home} /> }
+          <Route path="/registration-form" component={RegistrationForm} />
+       <Route exact path="/" component={Home} /> 
       <Route
         exact
         path="/recipe-list"

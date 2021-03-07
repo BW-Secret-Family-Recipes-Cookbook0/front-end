@@ -1,113 +1,66 @@
-import React, { useState, useEffect } from 'react';
-import './app.css';
-import axios from 'axios';
 
-export default function Registration(){  
-    const [values, setValues] = useState({
-        username:"",
-        email:"",
-        name:"",
-        password:"",
-        confirmPassword:"",
-    });    
-    
-    useEffect(()=>{
-        axios.get('https://bw-secret-family-recipes0.herokuapp.com/api/recipes/recipelist')
-        .then((res)=>{
-            console.log(res);
-        })
-        .catch((err)=>{
-            console.log(err)
-            
-        })
-    },[])
-    
-    // I don't know how to make this part better, so I won't repeat the code. 
-    const handleUsernameInputChange=(event)=>{
-        setValues({...values, username: event.target.value})
+import React from 'react';
+
+import axiosWithAuth from "../utils/axiosWithAuth";
+
+class RegistrationForm extends React.Component {
+  state = {
+    credentials: {
+      username: '',
+      password: ''
     }
-    
-    const handleEmailInputChange=(event)=>{
-        setValues({...values, email: event.target.value})
-    }
-    
-    const handleNameInputChange=(event)=>{
-        setValues({...values, name: event.target.value})
-    }
-    
-    const handlePasswordInputChange=(event)=>{
-        setValues({...values, password: event.target.value})
-    }
-    const handleConfirmPasswordInputChange=(event)=>{
-        setValues({...values, confirmPassword: event.target.value})
-    }
-    
-    const handleSubmit=(event)=>{
-        event.preventDefault();
-        axios.post('https://bw-secret-family-recipes0.herokuapp.com/api/recipes/recipelis',values)
-        .then((res)=>{  
-            console.log(res);
-        })
-        .catch((err)=>{
-            console.log(err)
-        })
+  };
+
+  handleChange = e => {
+    this.setState({
+      credentials: {
+        ...this.state.credentials,
+        [e.target.name]: e.target.value
+      }
+    });
+  };
+
+  submitRegistration = e => {
+    e.preventDefault();
+    axiosWithAuth()
+    .post('https://bw-secret-family-recipes0.herokuapp.com/api/auth/register', this.state.credentials)
+      .then(res => {
+        console.log("registration response", res)
         
-    }
-    
+        // localStorage.setItem("token", res.data.payload);
+        // this.props.history.push("/protected");
+      })
+      .catch(err => console.error("cannot login to server: ", err.message));
+  };
+
+  render() {
     return (
-        //creating the form
-        //the input fields work but I need to make the register button to work
-        <div className='form-container'>
-            <form className='registration-form'>
-                <h2>CREATE AN ACCOUNT</h2>
-                <label>
-                    <p className="form">Username:</p>
-                    <input
-                    onChange={handleUsernameInputChange}
-                    value={values.username}
-                    className="input-field"
-                    name="username" />
-                </label>
-                <label>
-                <p className="form">Email:</p>
-                <input
-                onChange={handleEmailInputChange}
-                value={values.email}
-                className="input-field"
-                name='email'/>
-                </label>
-                <label>
-                    <p className="form">Name:</p>
-                    <input
-                    onChange={handleNameInputChange}
-                    value={values.name}
-                    className="input-field"
-                    name="name"/>
-                </label>
-                <label>
-                <p className="form">Password:</p>
-                <input
-                onChange={handlePasswordInputChange}
-                value={values.password}
-                className="input-field"
-                name="password"/>
-                </label>
-                <label>
-                    <p className="form">Confirm Password:</p>
-                    <input 
-                    onChange={handleConfirmPasswordInputChange}
-                    value={values.confirmPassword}
-                    className="input-field"
-                    name="confirmPassword"/>
-                </label>
-                <button onSubmit={handleSubmit}>
-                    REGISTER
-                </button>
-            </form>
-            
-        </div>
-    )
-
-
+      <div className='form-container'>
+        <form className='registration-form' onSubmit={this.submitRegistration}>
+        <h2>registration</h2>
+        <label>
+          <p className="form">Username:</p>
+          <input
+            type="text"
+            name="username"
+            value={this.state.credentials.username}
+            onChange={this.handleChange}/>
+          </label>
+          <label>
+          <p className="form">Password:</p>
+          <input
+            type="password"
+            name="password"
+            value={this.state.credentials.password}
+            onChange={this.handleChange}/>
+          </label>
+          
+          
+          <button>REGISTER</button>
+        </form>
+      </div>
+    );
+  }
 }
 
+export default RegistrationForm;
