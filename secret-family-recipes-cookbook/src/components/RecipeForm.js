@@ -30,7 +30,7 @@ const RecipeForm = props => {
   const handleSubmit = e => {
     e.preventDefault();
 
-    axios.post('https://documenter.getpostman.com/view/13193397/TWDfBs3E/api/recipes', item)
+    axios.post('http://localhost:3333/', item)
       .then(res => {
         props.setItems(res.data)
         push('/recipes')
@@ -43,7 +43,7 @@ const RecipeForm = props => {
       <h2>Add New Recipe</h2>
       <form onSubmit={handleSubmit}>
         <input
-          type="string"
+          type="text"
           name="title"
           onChange={changeHandler}
           placeholder="Title"
