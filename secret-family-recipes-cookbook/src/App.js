@@ -74,6 +74,8 @@ function App() {
         path="/recipe-list"
         render={props => <RecipeList {...props} items={items} />}
       />
+      <Route exact path="/protected" component={RecipeForm} />
+
       <Route
         path="/recipe-list/:id"
         render={props => <Recipe {...props} items={items} setItems={setItems} />}

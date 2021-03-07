@@ -1,41 +1,41 @@
 import React, { useState } from 'react';
 import { useHistory } from "react-router-dom";
-import axios from 'axios';
+import axiosWithAuth from "../utils/axiosWithAuth";
 
 const initialItem = {
-  title: '',
-  source: '',
-  ingredients: '',
-  instructions: '',
-  category: ''
+  title: "",
+  source: "",
+  ingredients: "",
+  instructions: "",
+  category: "",
 };
 
 const RecipeForm = props => {
   const [item, setItem] = useState(initialItem);
   const { push } = useHistory();
 
-  const changeHandler = ev => {
-    ev.persist();
-    let value = ev.target.value;
-    if (ev.target.name === 'price') {
-      value = parseInt(value, 10);
-    }
+  const changeHandler = e => {
+    console.log("recipe form change handler", item)
+    // e.persist();
+    // let value = e.target.value;
 
     setItem({
       ...item,
-      [ev.target.name]: value
+      [e.target.name]: e.target.value
     });
   };
+    
 
   const handleSubmit = e => {
     e.preventDefault();
-
-    axios.post('http://localhost:3333/', item)
+    axiosWithAuth()
+    .post('https://bw-secret-family-recipes0.herokuapp.com/api/recipes', item)
       .then(res => {
-        props.setItems(res.data)
-        push('/recipes')
+        console.log("succesfully added recipe", item)
+        // props.setItems(res.data)
+        // push('/recipes')
       })
-
+       .catch(err => console.error("cannot post recipe ", {err}));
   };
 
   return (
@@ -61,7 +61,7 @@ const RecipeForm = props => {
         <div className="baseline" />
 
         <input
-          type="string"
+          type="text"
           name="ingredients"
           onChange={changeHandler}
           placeholder="Ingredients"
@@ -70,7 +70,7 @@ const RecipeForm = props => {
         <div className="baseline" />
 
         <input
-          type="string"
+          type="text"
           name="instructions"
           onChange={changeHandler}
           placeholder="Instructions"
@@ -79,7 +79,7 @@ const RecipeForm = props => {
         <div className="baseline" />
 
         <input
-          type="string"
+          type="text"
           name="category"
           onChange={changeHandler}
           placeholder="Category"

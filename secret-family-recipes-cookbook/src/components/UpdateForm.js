@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useHistory } from "react-router-dom";
-import axios from "axios";
+
+import axiosWithAuth from "../utils/axiosWithAuth";
 
 const initialItem = {
   title: '',
@@ -17,7 +18,8 @@ const UpdateForm = props => {
   const [item, setItem] = useState(initialItem);
 
   useEffect(() => {
-    axios.get(`http://localhost:3333//${id}`)
+    axiosWithAuth()
+    .get(`https://bw-secret-family-recipes0.herokuapp.com/api/recipes/${id}`)
       .then(res => {
         setItem(res.data)
       })
@@ -26,21 +28,17 @@ const UpdateForm = props => {
 
   const changeHandler = ev => {
     ev.persist();
-    let value = ev.target.value;
-    if (ev.target.name === "price") {
-      value = parseInt(value, 10);
-    }
-
     setItem({
       ...item,
-      [ev.target.name]: value
+      [ev.target.name]: ev.target.value
     });
   };
 
   const handleSubmit = e => {
     e.preventDefault();
 
-    axios.put(`http://localhost:3333//${id}`, item)
+    axiosWithAuth()
+    .put(`https://bw-secret-family-recipes0.herokuapp.com/api/recipes/${id}`, item)
       .then(res => {
         console.log(res)
         // goBack();
