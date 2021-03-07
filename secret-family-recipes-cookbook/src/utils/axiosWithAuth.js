@@ -13,4 +13,3 @@ export const axiosWithAuth = () => {
 
 
 export default axiosWithAuth;
-// https://ialkamal-be-amp.herokuapp.com/api
